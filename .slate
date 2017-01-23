@@ -55,8 +55,8 @@ alias 	4-bottom 	move screenOriginX;screenOriginY+screenSizeY/2 	screenSizeX;scr
 
 # 3 Monitor layout
 layout 3monitors 	${browser}:REPEAT               ${0-full}
-layout 3monitors 	${terminal}                     ${2-right}
-layout 3monitors 	${editor}:REPEAT		${1-full}
+layout 3monitors 	${terminal}                     ${1-right}
+layout 3monitors 	${editor}:REPEAT		            ${1-full}
 layout 3monitors 	'Slack':IGNORE_FAIL             ${2-full}
 
 # 2 Monitor layout
