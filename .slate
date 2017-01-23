@@ -1,0 +1,103 @@
+# Configs
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
+
+# HYPER KEY
+# The "hyper" key is a shortcut for CTRL + ALT + CMD
+alias hyper ctrl;alt;cmd
+
+# APPLICATION ALIASES
+alias browser 	'Firefox'
+alias editor 	'PhpStorm'
+alias terminal 	'Terminal'
+
+
+# APPLICATION BINDINGS
+bind b:alt;shift focus ${browser}
+bind e:alt;shift focus ${editor}
+bind s:alt;shift focus 'Slack'
+bind x:alt;shift focus ${terminal}
+
+# Position Aliases
+alias 	0-full 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY		0
+alias 	0-left 		move screenOriginX;screenOriginY 		screenSizeX/2;screenSizeY	0
+alias 	0-right 	move screenOriginX+screenSizeX/2;screenOriginY 	screenSizeX/2;screenSizeY	0
+alias 	0-top 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY/2	0
+alias 	0-bottom 	move screenOriginX;screenOriginY+screenSizeY/2 	screenSizeX;screenSizeY/2	0
+
+alias 	1-full 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY		1
+alias 	1-left 		move screenOriginX;screenOriginY 		screenSizeX/2;screenSizeY	1
+alias 	1-right 	move screenOriginX+screenSizeX/2;screenOriginY 	screenSizeX/2;screenSizeY	1
+alias 	1-top 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY/2	1
+alias 	1-bottom 	move screenOriginX;screenOriginY+screenSizeY/2 	screenSizeX;screenSizeY/2	1
+
+alias 	2-full 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY		2
+alias 	2-left 		move screenOriginX;screenOriginY 		screenSizeX/2;screenSizeY	2
+alias 	2-right 	move screenOriginX+screenSizeX/2;screenOriginY 	screenSizeX/2;screenSizeY	2
+alias 	2-top 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY/2	2
+alias 	2-bottom 	move screenOriginX;screenOriginY+screenSizeY/2 	screenSizeX;screenSizeY/2	2
+
+alias 	3-full 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY		3
+alias 	3-left 		move screenOriginX;screenOriginY 		screenSizeX/2;screenSizeY	3
+alias 	3-right 	move screenOriginX+screenSizeX/2;screenOriginY 	screenSizeX/2;screenSizeY	3
+alias 	3-top 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY/2	3
+alias 	3-bottom 	move screenOriginX;screenOriginY+screenSizeY/2 	screenSizeX;screenSizeY/2	3
+
+alias 	4-full 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY		4
+alias 	4-left 		move screenOriginX;screenOriginY 		screenSizeX/2;screenSizeY	4
+alias 	4-right 	move screenOriginX+screenSizeX/2;screenOriginY 	screenSizeX/2;screenSizeY	4
+alias 	4-top 		move screenOriginX;screenOriginY 		screenSizeX;screenSizeY/2	4
+alias 	4-bottom 	move screenOriginX;screenOriginY+screenSizeY/2 	screenSizeX;screenSizeY/2	4
+
+# 3 Monitor layout
+layout 3monitors 	${browser}:REPEAT               ${0-full}
+layout 3monitors 	${terminal}                     ${2-right}
+layout 3monitors 	${editor}:REPEAT		${1-full}
+layout 3monitors 	'Slack':IGNORE_FAIL             ${2-full}
+
+# 2 Monitor layout
+layout 2monitors 	'Slack':IGNORE_FAIL             ${2-right}
+layout 2monitors 	${browser}:REPEAT               ${2-full}
+layout 2monitors 	${editor}:REPEAT                ${1-full}
+
+# 1 Monitor layout
+layout 1monitor 	${browser}:REPEAT		${1-full}
+layout 1monitor 	${editor}:REPEAT		${1-full}
+layout 1monitor		${terminal}:REPEAT		${1-right}
+layout 1monitor 	'Slack':IGNORE_FAIL             ${1-left}
+
+# Default Layouts
+default 3monitors count:3
+default 2monitors count:2
+default 1monitor  count:1
+
+# Push Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
+bind right:alt;cmd 	push right 	bar-resize:screenSizeX/2
+bind left:alt;cmd  	push left  	bar-resize:screenSizeX/2
+
+# Nudge Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
+bind right:ctrl;alt resize +10% +0
+bind left:ctrl;alt  resize -10% +0
+bind up:ctrl;alt    resize +0   -10%
+bind down:ctrl;alt  resize +0   +10%
+
+
+# Layout Bindings
+bind 3:ctrl layout 3monitors
+bind 2:ctrl layout 2monitors
+bind 1:ctrl layout 1monitor
+
+# Window Hints
+bind esc:cmd hint
+
+# Switch currently doesn't work well so I'm commenting it out until I fix it.
+#bind tab:ctrl switch
+
+# Grid
+bind esc:ctrl grid padding:5 0:6,2 1:6,2 2:6.2
